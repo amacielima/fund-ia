@@ -1,144 +1,100 @@
 #include "BFS.h"
 
-	BFS::BFS()
-	{
-		
-	}
-	
-	bool BFS::insertQueue(State st, queue<State> q)
-	{
-		
-		queue<State> aux = q;
-		
-		
-		
-	}
+	BFS::BFS() {}
 	
 	void BFS::search (State initialState)
 	{
 		
-		visited.clear();
+		visited.clear(); 				// limpa vetor de visitados
 		
-		q.push(initialState);
+		q.push(initialState); 			// insere estado inicial na fila
 					
-		State currentState = q.front();
-		State newState = currentState;
+		State currentState = q.front();	// no atual é o primeiro da fila
+		State newState = currentState;	// estado a ser manipulado é o estado atual
 		
-		int a = currentState.getQtdA();
-		int b = currentState.getQtdB();
+		int a = currentState.qtd_a; 	// o valor de A é o valor do jarro A no estado inicial
+		int b = currentState.qtd_b; 	// o valor de B é o valor do jarro B no estado inicial
 		
-		// enquanto a fila não estiver vazia e o estado atual nao for o objetivo
+		// enquanto a fila não estiver vazia e o estado atual não for o objetivo
 		while (!q.empty() && !currentState.isGoal())
 		{
 			
-			a = currentState.getQtdA();
-			b = currentState.getQtdB();
-			newState = currentState;
+			a = currentState.qtd_a; // captura o novo valor do jarro A
+			b = currentState.qtd_b; // captura o novo valor do jarro B
+			newState = currentState;	// coloca no estado a ser manipulado o estado atual
 			
-			q.pop();
+			q.pop();					// tira o estado da fila
 			
-			/*
-				ações
-				1 - Encher o(s) jarros
-				2 - Esvaziar o(s) jarros
-				3 - Transferir do jarro A para o jarro B
-				4 - Transferir do jarro B para o jarro A
-			*/
-			
+			// se o estado atual nao estiver explorado, realizar o tratamento do estado
 			if (!exploredState(a, b))
 			{
 				
 				cout << "\t |--> Estado (" << a << "," << b << ")" << endl;
 				
-				// ação 1
-				if (a >= 0 && a < CAP_A && !exploredState(CAP_A, b))
-				{
-					
+				// verifica a possibilidade de execução de cada ação
+				
+				if (isPossibleState(1, a, b))
+				{					
 					newState.qtd_a = CAP_A;
 					newState.qtd_b = b;
-						
-					q.push(newState);
-						
-					cout << "\t |----> Encheu jarro A (" << newState.qtd_a << "," << newState.qtd_b << ")" << endl;
-					
+					q.push(newState);	// insere o novo valor na fila
+								
+					cout << "\t |----> Encheu jarro A (" << newState.qtd_a << "," << newState.qtd_b << ")" << endl;					
 				}
 				
-				if (b >= 0 && b < CAP_B && !exploredState(a, CAP_B))
+				if (isPossibleState(2, a, b))
 				{
 					
 					newState.qtd_a = a;
 					newState.qtd_b = CAP_B;
-					
-					q.push(newState);
+					q.push(newState); 	// insere o novo valor na fila
 						
 					cout << "\t |----> Encheu jarro B (" << newState.qtd_a << "," << newState.qtd_b << ")" << endl;
 					
 				}
-				
-				// ação 2
-				
-				if (a > 0 && !exploredState(0, b))
-				{
-					
+
+				if (isPossibleState(3, a, b))
+				{				
 					newState.qtd_a = 0;
 					newState.qtd_b = b;
+					q.push(newState);	// insere o novo valor na fila
 						
-					q.push(newState);
-						
-					cout << "\t |----> Esvaziou jarro A (" << newState.qtd_a << "," << newState.qtd_b << ")" << endl;
-					
+					cout << "\t |----> Esvaziou jarro A (" << newState.qtd_a << "," << newState.qtd_b << ")" << endl;			
 				}
 				
-				if (b > 0  && !exploredState(a, 0))
-				{
-					
+				if (isPossibleState(4, a, b))
+				{	
 					newState.qtd_a = a;
 					newState.qtd_b = 0;
-					
-					q.push(newState);
+					q.push(newState);	// insere o novo valor na fila
 						
-					cout << "\t |----> Esvaziou jarro B (" << newState.qtd_a << "," << newState.qtd_b << ")" << endl;
-					
+					cout << "\t |----> Esvaziou jarro B (" << newState.qtd_a << "," << newState.qtd_b << ")" << endl;					
 				}
-				
-				// ação 3
-				
-				int a_b_x = max(0, a + b - CAP_B);
-				int a_b_y = min(a + b, CAP_B);
 							
-				if (a_b_x >= 0 && a_b_x != a && a_b_y != b && !exploredState(a_b_x, a_b_y))
+				if (isPossibleState(5, a, b))
 				{
-					
-					newState.qtd_a = a_b_x;
-					newState.qtd_b = a_b_y;
-					
-					q.push(newState);
+					newState.qtd_a = max(0, a + b - CAP_B);
+					newState.qtd_b = min(a + b, CAP_B);
+					q.push(newState);	// insere o novo valor na fila
 												
 					cout << "\t |----> Transferiu do jarro A para o B (" << newState.qtd_a << "," << newState.qtd_b << ")" << endl;
-	
 				}
 				
-				// ação 4
-				
-				int b_a_x = min(a + b, CAP_A);
-				int b_a_y = max(0, a + b - CAP_A);
-				
-				if (b_a_y >= 0 && b_a_x != a && b_a_y != b && !exploredState(b_a_x, b_a_y))
-				{
-					
-					newState.qtd_a = b_a_x;
-					newState.qtd_b = b_a_y;
-					
-					q.push(newState);
+				if (isPossibleState(6, a, b))
+				{		
+					newState.qtd_a = min(a + b, CAP_A);
+					newState.qtd_b = max(0, a + b - CAP_A);
+					q.push(newState);	// insere o novo valor na fila
 						
 					cout << "\t |----> Transferiu do jarro B para o A (" << newState.qtd_a << "," << newState.qtd_b << ")" << endl;
-	
 				}
 	
+				// insere o nó que foi explorado no vetor de visitados
 				visited.push_back(currentState);
 				
 			}
-					
+			
+			// o próximo valor da fila é o estado atual		
 			currentState = q.front();
 			
 		}

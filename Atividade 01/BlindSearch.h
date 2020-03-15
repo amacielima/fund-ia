@@ -10,20 +10,25 @@ using namespace std;
 #ifndef blindsearch
 #define blindsearch
 
+#define CAP_A 3 // capacidade jarro A
+#define CAP_B 4 // capacidade jarro B
+
 	class BlindSearch
 	{
 		
 		public:
 			
-		vector<State> visited;
+		vector<State> visited;					// vetor de nós visitados na busca
 			
-		BlindSearch() {};
+		BlindSearch() {};						// construtor
 		
-		bool exploredState(int, int);
+		bool exploredState(int, int);			// verifica se o nó já foi explorado na busca
 		
-		virtual void search (State) = 0;
+		bool isPossibleState(int, int, int);	// verifica se determinada ação pode ser realizada
 		
-		~BlindSearch() {};
+		virtual void search (State) = 0;		// método virtual para busca BFS/DFS
+		
+		~BlindSearch() {};						// destrutor
 		
 	};
 	

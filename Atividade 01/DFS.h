@@ -1,8 +1,5 @@
 #include "BlindSearch.h"
 
-#define CAP_A 3 // capacidade jarro A
-#define CAP_B 4 // capacidade jarro B
-
 using namespace std;
 
 #ifndef dfs
@@ -15,11 +12,11 @@ using namespace std;
 			
 		stack<State> s; 		// pilha para a busca DFS
 		
-		DFS();
+		DFS();					// construtor
 
-		void search (State);
+		void search (State);	// método de busca
 		
-		
+		~DFS() {};
 	};
 
 #endif
