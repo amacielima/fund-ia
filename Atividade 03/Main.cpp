@@ -2,6 +2,7 @@
 
 #include "Board.h"
 #include "MinMax.h"
+#include "Game.h"
 
 #define MIN_X 1
 #define MIN_Y 1
@@ -31,15 +32,10 @@ using namespace std;
 			cout << "\n\t# # # # # # # # # # # # # # # # #" << endl << endl;
 		}
 		
-		// cria o objeto do quadro
-		Board b;
-		
-		// insere os valores iniciais
-		b.insertValue(x, y, 'O');
-		b.print();
-		
-		// inici algoritmo
-		MinMax mm(b);
+		// inicia o jogo
+		Game g;
+		g.insertValue(x - 1, y - 1, 'O');
+		g.print();
 		
 		return 0;
 		

@@ -2,19 +2,24 @@
 
 #include "Board.h"
 
+#define INF 100
+#define ERROR 404
+
 using namespace std;
 
 #ifndef minmax
 #define minmax
 
-	class MinMax
+	class MinMax : public Board
 	{
 	
 		public:
 		
-		Board b;
+		MinMax() {};
 		
-		MinMax(Board);
+		int min(Board);
+		
+		int max(Board);
 		
 	};
 

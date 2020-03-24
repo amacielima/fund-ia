@@ -2,6 +2,9 @@
 
 	Board::Board()
 	{
+		
+		winner = '*';
+		
 		// inicializa a matriz
 		for (int i = 0; i < X; i++)
 		{
@@ -9,7 +12,7 @@
 			
 			for (int j = 0; j < Y; j++)
 			{
-				b[i][j] = '-';
+				b[i][j] = empty;
 			}
 			
 		}
@@ -44,7 +47,12 @@
 		// insere valor nas posições indicadas
 		if (x >= MIN_X && x <= MAX_X && y >= MIN_X && y <= MAX_Y)
 		{
-			b[x - 1][y -1] = value;
+			b[x][y] = value;
+		}
+		
+		else
+		{
+			cout << "Movimento inválido!" << endl << endl;
 		}
 
 	}
@@ -52,7 +60,7 @@
 	bool Board::isFree(int x, int y)
 	{
 		// verifica se o bloco está livre	
-		if (b[x][y] == '-')
+		if (b[x][y] == empty)
 		{
 			return true;
 		}
@@ -64,9 +72,28 @@
 		
 	}
 	
-	bool Board::isTie()
+	bool Board::isDraw()
 	{
-		return false;
+		// verifica se não há casas vazias
+		for (int i = 0; i < X; i++)
+		{
+			
+			cout << "\t     " << i + 1;
+			
+			for (int j = 0; j < Y; j++)
+			{
+				
+				if(b[i][j] == empty)
+				{
+					return false;
+				}
+				
+			}
+			
+		}
+		
+		return true;
+					
 	}
 	
 	bool Board::checkPlayerWin(char player)
@@ -77,12 +104,14 @@
 			// verifica se venceu pela horizontal
 			if (b[i][0] == player && b[i][1] == player && b[i][2] == player)
 			{
+				winner = player;
 				return true;
 			}
 			
 			// verifica se venceu pela vertical
 			if (b[0][i] == player && b[1][i] == player && b[2][i] == player)
 			{
+				winner = player;
 				return true;
 			}
 		}
@@ -90,9 +119,17 @@
 		// verifica se venceu por alguma das diagonais
 		if ( (b[0][0] == player && b[1][1] == player && b[2][2] == player) || (b[2][0] == player && b[1][1] == player && b[2][0] == player) )
 		{
+			winner = player;
 			return true;
 		}
 				
 		return false;
 		
+	}
+	
+	int Board::utility()
+	{
+		int value = 0;
+		
+		return value;
 	}
