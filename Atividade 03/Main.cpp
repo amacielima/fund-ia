@@ -33,7 +33,8 @@ using namespace std;
 			
 			cout << "\n\t# # # # # # # # # # # # # # # # #" << endl << endl;
 		}
-	
+		
+		// insere posições iniciais no quadro
 		b->insertValue(x - 1, y - 1, b->player);
 		
 		// inicializa jogo

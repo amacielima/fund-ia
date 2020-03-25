@@ -13,11 +13,11 @@ using namespace std;
 	
 		public:
 		
-		MinMax() {};
+		MinMax() {};		// construtor
 		
-		void min(Board *);
+		void min(Board *);	// função min do algoritmo min_max
 		
-		void max(Board *);
+		void max(Board *); // função max do algoritmo min_max
 		
 	};
 

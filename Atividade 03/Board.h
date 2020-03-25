@@ -40,7 +40,7 @@ using namespace std;
 		
 		bool checkPlayerWin(char);			// verifica se o jogador ganhou
 		
-		int utility(char, char, int, int);					// calcula função de utilidade
+		int utility(char, char, int, int);	// calcula função de utilidade
 		
 	};
 

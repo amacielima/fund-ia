@@ -5,7 +5,7 @@
 		
 		// inicia a variável de score com valor positivo
 		int score = + INF;
-		int x = 0, y = 0;
+		int x = -1, y = -1;
 		
 		// retornar 0 se estiver empatado
 		if (!b->isDraw())
@@ -45,7 +45,11 @@
 				
 			}
 			
-			b->insertValue(x, y, b->player);
+			// se houver posição da melhor jogada, inserir jogada no respectivo valor do quadro
+			if (x != -1 && y != -1)
+			{
+				b->insertValue(x, y, b->player);
+			}
 			
 		}
 
@@ -97,6 +101,7 @@
 				
 			}
 			
+			// se houver posição da melhor jogada, inserir jogada no respectivo valor do quadro
 			if (x != -1 && y != -1)
 			{
 				b->insertValue(x, y, b->cpu);

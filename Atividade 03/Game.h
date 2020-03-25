@@ -12,23 +12,21 @@ using namespace std;
 	{
 		private:
 			
-		int turn;
+		int turn;				// varivável para controle do número da jogada
 	
 		public:
 			
-		MinMax mm;
+		MinMax mm;				// variável do cálculo do algoritmo min_max
 		
-		Board * b;
+		Board * b;				// quadro do jogo
 			
-		Game(Board * );
+		Game(Board * );			// construtor
 			
-		void start();
+		void start();			// inicia jogo
 		
-		void incrementTurn();
+		void incrementTurn(); 	// incrementa o número do turno		
 		
-		int getTurn();
-		
-		void playerTurn();
+		void playerTurn();		// função para disponibilizar interface para o turno do jogador
 		
 	};
 
