@@ -5,11 +5,11 @@ using namespace std;
 #define X 3
 #define Y 3
 
-#define MIN_X 1
-#define MIN_Y 1
+#define MIN_X 0
+#define MIN_Y 0
 
-#define MAX_X 3
-#define MAX_Y 3
+#define MAX_X 2
+#define MAX_Y 2
 
 #ifndef board
 #define board
@@ -24,7 +24,7 @@ using namespace std;
 		static const char cpu = 'X';		// símbolo da cpu
 		static const char empty = '-';		// símbolo vazio
 		
-		char winner;
+		char winner;						// variável para indicar o vencedor
 		
 		bool over;							// verifica se o jogo foi finalizado
 		
@@ -40,7 +40,7 @@ using namespace std;
 		
 		bool checkPlayerWin(char);			// verifica se o jogador ganhou
 		
-		int utility();						// calcula função de utilidade
+		int utility(char, char, int, int);					// calcula função de utilidade
 		
 	};
 

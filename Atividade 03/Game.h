@@ -8,7 +8,7 @@ using namespace std;
 #ifndef game
 #define game
 
-	class Game : public Board
+	class Game
 	{
 		private:
 			
@@ -16,7 +16,11 @@ using namespace std;
 	
 		public:
 			
-		Game();
+		MinMax mm;
+		
+		Board * b;
+			
+		Game(Board * );
 			
 		void start();
 		

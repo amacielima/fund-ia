@@ -4,12 +4,6 @@
 #include "MinMax.h"
 #include "Game.h"
 
-#define MIN_X 1
-#define MIN_Y 1
-
-#define MAX_X 3
-#define MAX_Y 3
-
 using namespace std;
 
 	int main() 
@@ -21,7 +15,15 @@ using namespace std;
 		cout << "\t# # # # # Jogo da Velha # # # # #" << endl;
 		cout << "\t# # # # # # # # # # # # # # # # #" << endl << endl;
 		
-		while (!(x >= MIN_X && x <= MAX_X && y >= MIN_X && y <= MAX_Y))
+		cout << "\t     O - Jogador   X - CPU\n" << endl;
+		
+		cout << "\t# # # # # # # # # # # # # # # # #" << endl << endl;
+		
+		// inicia o quadro do jogo
+		Board * b = new Board();
+		b->print();
+		
+		while (!(x >= (MIN_X + 1) && x <= (MAX_X + 1) && y >= (MIN_Y + 1) && y <= (MAX_Y + 1)))
 		{
 			cout << "\tInsira o ID da linha: ";
 			cin >> x;
@@ -31,11 +33,11 @@ using namespace std;
 			
 			cout << "\n\t# # # # # # # # # # # # # # # # #" << endl << endl;
 		}
+	
+		b->insertValue(x - 1, y - 1, b->player);
 		
-		// inicia o jogo
-		Game g;
-		g.insertValue(x - 1, y - 1, 'O');
-		g.print();
+		// inicializa jogo
+		Game g(b);
 		
 		return 0;
 		

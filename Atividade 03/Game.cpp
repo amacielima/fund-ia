@@ -1,7 +1,8 @@
 #include "Game.h"
 
-	Game::Game()
+	Game::Game(Board * b)
 	{
+		this->b = b;
 		turn = 0;		
 		start();	
 	}
@@ -18,15 +19,11 @@
 	
 	void Game::playerTurn()
 	{
-		int x = 0, y = 0;
 		
+		int x = 0, y = 0;
 		bool flag = false;
 		
-		cout << "\n\t# # # # # # # # # # # # # # # # #" << endl;
-		cout << "\t# # # # # Jogo da Velha # # # # #" << endl;
-		cout << "\t# # # # # # # # # # # # # # # # #" << endl << endl;
-		
-		print();
+		b->print();
 		
 		while (!flag)
 		{
@@ -38,12 +35,12 @@
 			
 			cout << "\n\t# # # # # # # # # # # # # # # # #" << endl << endl;
 			
-			if (x >= MIN_X && x <= MAX_X && y >= MIN_X && y <= MAX_Y)
+			if ((x >= (MIN_X + 1) && x <= (MAX_X + 1) && y >= (MIN_Y + 1) && y <= (MAX_Y + 1)))
 			{
 				
-				if (isFree(x,y))
+				if (b->isFree(x - 1, y - 1))
 				{
-					insertValue(x, y, player);
+					b->insertValue(x - 1, y - 1, b->player);
 					flag = true;
 				}
 		
@@ -56,44 +53,61 @@
 			
 			else
 			{
-				cout << "\n\tMovimento inválido!" << endl << endl;
+				cout << "\n\tMovimento invalido!" << endl << endl;
 			}
 			
 		}
-		
-		system("cls");
-		
+
 	}
 	
 	void Game::start()
 	{
-		bool over = false;
+		
+		bool p_over = false, c_over = false;
 		incrementTurn();
 		
-		while (!isDraw() && winner != '*')
+		while (!b->isDraw() && b->winner == '*')
 		{
 			
-			if (turn % 2 == 0)
+			if ((turn % 2) == 0)
 			{
 				playerTurn();
 			}
 		
 			else
 			{
-				
+				mm.max(b);
 			}
 			
-			// verifica se algum jogador ganhou
-			over = checkPlayerWin(player);
-			over = checkPlayerWin(cpu);
+			// verifica se algum jogador ganhou	
+			p_over = b->checkPlayerWin(b->player);
+			c_over = b->checkPlayerWin(b->cpu);
+			
+			if (p_over == true)
+			{
+				b->winner = b->player;
+			}
+			
+			else if (c_over == true)
+			{
+				b->winner = b->cpu;
+			}
 			
 			incrementTurn();
 			
+			// imprime jogo
+			b->print();
+	
+		}	
+		
+		if(!b->isDraw())
+		{
+			cout << "\n\tJogador " << b->winner << " venceu!" << endl;
 		}
 		
-		// imprime jogo
-		print(); 	
-		
-		cout << "\n\tJogador " << winner << " venceu!" << endl;
+		else
+		{
+			cout << "\n\tVelha!" << endl;
+		}
 		
 	}
