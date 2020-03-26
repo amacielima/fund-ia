@@ -15,7 +15,7 @@ using namespace std;
 		
 		MinMax() {};		// construtor
 		
-		void min(Board *);	// função min do algoritmo min_max
+		//void min(Board *);	// função min do algoritmo min_max
 		
 		void max(Board *); // função max do algoritmo min_max
 		

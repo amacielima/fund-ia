@@ -1,5 +1,6 @@
 #include "MinMax.h"
 
+	/*
 	void MinMax::min (Board * b)
 	{
 		
@@ -54,6 +55,7 @@
 		}
 
 	}
+	*/
 	
 	void MinMax::max (Board * b)
 	{
