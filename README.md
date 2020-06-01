@@ -1,7 +1,7 @@
 ## :open_file_folder: Fundamentos da Inteligência Artificial
 Entregas da disciplina PEL202 - Fundamentos da Inteligência Artificial.
 
-#### __Atividade 01:__
+#### __Atividade 01__
 Busca BFS (*Breadth-First Search*) e DFS (*Depth-First Search*) para o problema dos jarros.
 
 ```
