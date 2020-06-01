@@ -5,7 +5,7 @@ Entregas da disciplina PEL202 - Fundamentos da Inteligência Artificial.
 Busca BFS (*Breadth-First Search*) e DFS (*Depth-First Search*) para o problema dos jarros.
 
 ```
-Dado uma bica d`agua, um jarro de capacidade 3 litros e um jarro de capacidade 4 litros (ambos vazios). 
+Dado uma bica d'água, um jarro de capacidade 3 litros e um jarro de capacidade 4 litros (ambos vazios). 
 Como obter 2 litros no jarro de 4?
 ```
 
