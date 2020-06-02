@@ -10,7 +10,7 @@ Como obter 2 litros no jarro de 4?
 ```
 
 #### __Atividade 03__
-Jogo da velha com o algoritmo *Min-Max* (usuário contra PC).
+Jogo da velha com o algoritmo *Min-Max* (usuário contra computador).
 
 
 #### __Atividade 06__
@@ -18,15 +18,15 @@ Implementação do algoritmo ID3 para classificar o *dataset* de Íris.
 
 
 #### __Atividade 07__
-Aplicação de Regressão Linear, PCA (*Principal Component Analysis*), SVM (*Support Vector Machine*) e LDA (*Linear Discriminant Analysis*) na base de Íris e visualização de dados pela biblioteca *scikit learn* do Python.
+Aplicação de Regressão Linear, PCA (*Principal Component Analysis*), SVM (*Support Vector Machine*) e LDA (*Linear Discriminant Analysis*) na base de Íris e visualização de dados pela biblioteca *scikit-learn* do Python.
 
 
 #### __Atividade 08__
-Aplicação e visualização de dados do *Perceptron* na base de Íris usando a biblioteca *scikit learn* do Python.
+Aplicação e visualização de dados do *Perceptron* na base de Íris usando a biblioteca *scikit-learn* do Python.
 
 
 #### __Atividade 09__
 Aplicação do *DenseNet* em imagens de teste através do *Keras*.
 
 #### __Atividade 10__
-Implementação do *Q-Learning* para o mundo de grades.
+Implementação do *Q-Learning* para o mundo de grades (3x2).
